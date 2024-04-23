@@ -2,7 +2,7 @@
 
 *ADVERTENCIA*
 
-Cada función debe implementarse como una característica separada. Recuerden fusionar cambios y hacer "pull" antes de subir sus modificaciones para evitar conflictos.
+Cada nueva función debe implementarse como una feature separada luego se integran. Recuerden fusionar cambios y hacer "pull" antes de subir sus modificaciones para evitar conflictos.
 
 Nunca utilicen "force".
 
