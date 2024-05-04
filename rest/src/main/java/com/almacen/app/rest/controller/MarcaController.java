@@ -1,14 +1,13 @@
-package com.almacen.app.rest.Controller;
+package com.almacen.app.rest.controller;
 
-import com.almacen.app.rest.Model.Marca;
-import com.almacen.app.rest.Repository.MarcaRepository;
+import com.almacen.app.rest.model.Marca;
+import com.almacen.app.rest.repository.MarcaRepository;
 import java.util.List;
-import org.aspectj.apache.bcel.generic.RET;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class Controller {
+public class MarcaController {
     @Autowired
     private MarcaRepository marcaRepository;
 
@@ -55,7 +54,7 @@ public class Controller {
             marcaRepository.save(activatedMarca);
             return "la marca ha cambiado de estado a Activo";
         }else {
-            return "Marca no encontrada"; 
+            return "Marca no encontrada";
         }
     }
 
