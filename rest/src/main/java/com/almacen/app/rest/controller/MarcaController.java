@@ -1,21 +1,37 @@
 package com.almacen.app.rest.controller;
 
+import com.almacen.app.rest.dto.response.MarcaDTO;
 import com.almacen.app.rest.model.Marca;
 import com.almacen.app.rest.repository.MarcaRepository;
+import com.almacen.app.rest.service.MarcaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class MarcaController {
-    @Autowired
-    private MarcaRepository marcaRepository;
 
+    /*private MarcaRepository marcaRepository;*/
+    private MarcaService marcaService;
+
+    @Autowired
+    public MarcaController(MarcaService marcaService){
+        this.marcaService = marcaService;
+    }
+
+    @GetMapping(value = "marcas")
+    public List<MarcaDTO> getMarcas(){
+        return marcaService.getAllMarcas();
+    }
+
+
+    /*
     @GetMapping(value = "/")
 
     public String saludo(){
         return "saludoss !!";
     }
+
 
     @GetMapping(value = "/marcas")
     public List<Marca> getMarcas(){
@@ -57,5 +73,7 @@ public class MarcaController {
             return "Marca no encontrada";
         }
     }
+
+     */
 
 }
