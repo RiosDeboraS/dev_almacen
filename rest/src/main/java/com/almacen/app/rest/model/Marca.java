@@ -1,8 +1,9 @@
-package com.almacen.app.rest.Model;
+package com.almacen.app.rest.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -14,14 +15,18 @@ public class Marca  {
     @Column
     private String descripcion;
 
+    @Column
+    private LocalDateTime fecha_baja;
+
     @Column(name = "activo")
     private boolean activo = true;
 
     public Marca(){}
 
-    public Marca(Long id_marca,String descripcion){
+    public Marca(Long id_marca,String descripcion, LocalDateTime fecha_baja){
         this.id_marca = id_marca;
         this.descripcion = descripcion;
+        this.fecha_baja = fecha_baja;
 
     }
 
@@ -37,6 +42,13 @@ public class Marca  {
     }
     public void setDescripcion(String descripcion){
         this.descripcion = descripcion;
+    }
+
+    public LocalDateTime getFecha_baja(){
+        return fecha_baja;
+    }
+    public void setFecha_baja(LocalDateTime fecha_baja){
+        this.fecha_baja = fecha_baja;
     }
     @JsonIgnore
     public boolean isActivo(){
