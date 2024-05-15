@@ -1,22 +1,37 @@
-package com.almacen.app.rest.Controller;
+package com.almacen.app.rest.controller;
 
-import com.almacen.app.rest.Model.Marca;
-import com.almacen.app.rest.Repository.MarcaRepository;
+import com.almacen.app.rest.dto.response.MarcaDTO;
+import com.almacen.app.rest.model.Marca;
+import com.almacen.app.rest.repository.MarcaRepository;
+import com.almacen.app.rest.service.MarcaService;
 import java.util.List;
-import org.aspectj.apache.bcel.generic.RET;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class Controller {
-    @Autowired
-    private MarcaRepository marcaRepository;
+public class MarcaController {
 
+    /*private MarcaRepository marcaRepository;*/
+    private MarcaService marcaService;
+
+    @Autowired
+    public MarcaController(MarcaService marcaService){
+        this.marcaService = marcaService;
+    }
+
+    @GetMapping(value = "marcas")
+    public List<MarcaDTO> getMarcas(){
+        return marcaService.getAllMarcas();
+    }
+
+
+    /*
     @GetMapping(value = "/")
 
     public String saludo(){
         return "saludoss !!";
     }
+
 
     @GetMapping(value = "/marcas")
     public List<Marca> getMarcas(){
@@ -55,8 +70,10 @@ public class Controller {
             marcaRepository.save(activatedMarca);
             return "la marca ha cambiado de estado a Activo";
         }else {
-            return "Marca no encontrada"; 
+            return "Marca no encontrada";
         }
     }
+
+     */
 
 }
